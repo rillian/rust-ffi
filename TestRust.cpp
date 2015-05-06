@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-extern uint8_t* test_rust();
+extern "C" uint8_t* test_rust();
 
 bool
 test_rust_wrapper() {
