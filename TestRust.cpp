@@ -6,7 +6,7 @@ extern "C" uint8_t* test_rust();
 bool
 test_rust_wrapper() {
   auto greeting = test_rust();
-  fprintf(stdout, "rust said: %s", greeting);
+  fprintf(stdout, "rust said: %s\n", greeting);
   return greeting;
 }
 
