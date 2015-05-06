@@ -3,9 +3,12 @@
 CXXFLAGS = -g -Wall -std=c++1y
 RUST_LIBS = -ldl -lpthread -lrt -lgcc_s -lpthread -lc -lm
 
-test: TestRust.cpp test.rs
+lib%.a lib%.a.out : *.rs
+	rustc --crate-type staticlib $^ 2> $(<:%.rs=lib%.a.out)
+
+test: RUST_LIBS = $(shell awk '/^note: library: / {print "-l"$$3}' libtest.a.out)
+test: TestRust.cpp libtest.a
 	$(CXX) $(CXXFLAGS) -c TestRust.cpp
-	rustc --crate-type staticlib test.rs
 	$(CXX) $(CXXFLAGS) -o $@ TestRust.o libtest.a $(RUST_LIBS)
 
 clean:
