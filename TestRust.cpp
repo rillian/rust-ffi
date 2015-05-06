@@ -7,9 +7,9 @@ bool
 test_rust_wrapper() {
   auto greeting = test_rust();
   fprintf(stdout, "rust said: %s\n", greeting);
-  return greeting;
+  return greeting != nullptr;
 }
 
 int main() {
-  return test_rust_wrapper();
+  return !test_rust_wrapper();
 }
