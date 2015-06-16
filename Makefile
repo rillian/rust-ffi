@@ -14,7 +14,7 @@ test: TestRust.cpp libtest.a
 	$(CXX) $(CXXFLAGS) -o $@ TestRust.o libtest.a $(RUST_LIBS)
 
 check: test
-	./test
+	@./test
 
 clean:
 	$(RM) test
