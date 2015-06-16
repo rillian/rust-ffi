@@ -19,3 +19,4 @@ check: test
 clean:
 	$(RM) test
 	$(RM) *.o *.a
+	$(RM) libtest.a.out
